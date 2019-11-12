@@ -1,0 +1,7 @@
+## Interface:11302
+## Title: Classic EPGP-Zulu
+## Author: Vinneg
+## Notes: EPGP extension for raid and locale
+## SavedVariables: Settings
+
+Main.lua
