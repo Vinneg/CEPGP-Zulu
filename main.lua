@@ -1,29 +1,58 @@
-this = {
-    start = 0,
+local eventFrame = CreateFrame("Frame", nil, WorldFrame);
+
+SLASH_CEPGPZ1 = "/cepz";
+CEPGPZ_START = "start";
+
+CEPGPZ_locals = {
+    finish = 0,
     last = 0,
+    showOn = {1, 2, 3, 5, 10, 20, 30},
+    channel = "RAID_WARNING",
 };
 
-SLASH_CEPGP1 = "/cepz";
-
-function SlashCmdList.CEPGP(msg, editbox)
+function SlashCmdList.CEPGPZ(msg, editbox)
     if msg == nil then
         return;
     end
 
-    msg = string.lower(msg);
+    local args = {strsplit("-", string.lower(msg))};
 
-    args = {strsplit("-", msg)};
-	
 	for i, v in pairs(args) do
-		print(v);
+        local arg, val = strsplit(" ", v, 2);
+
+        if arg == CEPGPZ_START then
+            CEPGPZ_locals.finish = GetTime() + tonumber(val);
+            CEPGPZ_locals.last = val - 1;
+
+            SendChatMessage("Consumables check in "..val.." sec", CEPGPZ_locals.channel);
+            --print("Consumables check in "..val.." sec");
+        end
 	end
 end
 
-local function DoUpdate()
-    this.last = GetTime();
+function CEPGPZ_locals.DoUpdate()
+    if CEPGPZ_locals.finish == 0 then
+        CEPGPZ_locals.last = 0;
 
-    local pass = math.floor(this.last - this.start);
+        return;
+    end
+
+    local now = GetTime();
+    local left = math.floor(CEPGPZ_locals.finish - now);
+
+    if left < 0 then
+        CEPGPZ_locals.finish = 0;
+        CEPGPZ_locals.last = 0;
+
+        return;
+    end
+
+    if left < CEPGPZ_locals.last and tContains(CEPGPZ_locals.showOn, left) then
+        CEPGPZ_locals.last = left;
+
+        SendChatMessage("Consumables check in "..left.." sec", CEPGPZ_locals.channel);
+        --print("Consumables check in "..left.." sec");
+    end
 end
 
-local eventFrame = CreateFrame("Frame", nil, WorldFrame);
-eventFrame:SetScript("OnUpdate", DoUpdate);
+eventFrame:SetScript("OnUpdate", CEPGPZ_locals["DoUpdate"]);
