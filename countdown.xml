@@ -25,13 +25,17 @@
         </Backdrop>
         <Layers>
             <Layer level="OVERLAY">
-                <FontString name="CEPGPZ_countdown_left" inherits="GameFontNormal" text="0">
+                <FontString name="CEPGPZ_countdown_left" inherits="GameFontNormal" text="">
                     <Size>
                         <AbsDimension x="80" y="25"/>
                     </Size>
                     <Color r="1" g="1" b="1"/>
                     <Anchors>
-                        <Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGPZ_countdown"/>
+                        <Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGPZ_countdown">
+                            <Offset>
+                                <AbsDimension x="15" y="0" />
+                            </Offset>
+                        </Anchor>
                     </Anchors>
                 </FontString>
             </Layer>
@@ -42,7 +46,11 @@
                     <AbsDimension x="80" y="25"/>
                 </Size>
                 <Anchors>
-                    <Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="CEPGPZ_countdown"/>
+                    <Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="CEPGPZ_countdown">
+                        <Offset>
+                            <AbsDimension x="-15" y="0" />
+                        </Offset>
+                    </Anchor>
                 </Anchors>
                 <Scripts>
                     <OnClick>
@@ -53,7 +61,7 @@
         </Frames>
         <Scripts>
             <OnUpdate>
-                    CEPGPZ_OnUpdateCountdown(self)
+                    CEPGPZ_OnUpdateCountdown()
             </OnUpdate>
         </Scripts>
     </Frame>

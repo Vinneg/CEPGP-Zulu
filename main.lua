@@ -1,5 +1,3 @@
-local eventFrame = CreateFrame("Frame", nil, WorldFrame);
-
 SLASH_CEPGPZ1 = "/cepz";
 
 CEPGPZ_commands = {

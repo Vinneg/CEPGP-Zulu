@@ -1,5 +1,3 @@
-
-
 CEPGPZ_Countdown = {
     finish = 0,
     last = 0,
@@ -26,7 +24,7 @@ function CEPGPZ_CancelCountdown()
     HideUIPanel(CEPGPZ_countdown);
 end
 
-function CEPGPZ_OnUpdateCountdown(self)
+function CEPGPZ_OnUpdateCountdown()
     if not CEPGPZ_Countdown.active then
         CEPGPZ_Countdown.finish = 0;
         CEPGPZ_Countdown.last = 0;
@@ -38,7 +36,7 @@ function CEPGPZ_OnUpdateCountdown(self)
 
     local left = math.floor(CEPGPZ_Countdown.finish - GetTime());
 
-    CEPGPZ_countdown_left:SetText(left);
+    CEPGPZ_countdown_left:SetText("Check in "..left.." sec");
 
     if left < 0 then
         CEPGPZ_Countdown.active = false;
