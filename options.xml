@@ -1,0 +1,27 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Script file="core.lua"/>
+    <Script file="options.lua"/>
+
+    <Frame name="CEPGPZ_options" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true"
+           clampedToScreen="true">
+        <Size>
+            <AbsDimension x="450" y="480"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
+                  tile="true">
+            <Color r="0" g="0" b="0"/>
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+        </Backdrop>
+    </Frame>
+</Ui>

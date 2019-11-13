@@ -2,6 +2,10 @@
 ## Title: Classic EPGP-Zulu
 ## Author: Vinneg
 ## Notes: EPGP extension for raid and locale. Usage: /cepz for options
-## SavedVariables: Settings
+## SavedVariables: CEPGPZ_globals
 
+countdown.lua
+countdown.xml
 main.lua
+options.lua
+options.xml
