@@ -33,7 +33,7 @@
                     <Anchors>
                         <Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGPZ_countdown">
                             <Offset>
-                                <AbsDimension x="15" y="0" />
+                                <AbsDimension x="15" y="0"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -48,7 +48,7 @@
                 <Anchors>
                     <Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="CEPGPZ_countdown">
                         <Offset>
-                            <AbsDimension x="-15" y="0" />
+                            <AbsDimension x="-15" y="0"/>
                         </Offset>
                     </Anchor>
                 </Anchors>

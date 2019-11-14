@@ -5,7 +5,7 @@ CEPGPZ_commands = {
 }
 
 CEPGPZ_globals = {
-    showOn = {1, 2, 3, 5, 10, 20, 30},
+    showOn = { 1, 2, 3, 5, 10, 20, 30 },
     channel = "RAID_WARNING",
 };
 
@@ -14,14 +14,14 @@ function SlashCmdList.CEPGPZ(msg)
         return;
     end
 
-    local args = {strsplit("-", string.lower(msg))};
+    local args = { strsplit("-", string.lower(msg)) };
 
-	for _, v in pairs(args) do
+    for _, v in pairs(args) do
         local arg, val = strsplit(" ", v, 2);
 
         if arg == CEPGPZ_commands.START then
             CEPGPZ_StartCountdown(val);
             ShowUIPanel(CEPGPZ_countdown);
         end
-	end
+    end
 end
