@@ -47,9 +47,6 @@ CEPGPZulu.options = {
     },
 };
 
-function CEPGPZulu:EPGP_Scan()
-end
-
 function CEPGPZulu:EPGP_ScanRaid()
     if UnitInRaid("player") == nil then
         return;
