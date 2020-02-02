@@ -1,22 +1,22 @@
-local Overseer = LibStub('AceAddon-3.0'):GetAddon('Overseer');
+local CEPGPZulu = LibStub('AceAddon-3.0'):GetAddon('CEPGPZulu');
 
 local function get(info)
-    return Overseer.db.char[info[#info]];
+    return CEPGPZulu.db.char[info[#info]];
 end
 
 local function set(info, value)
-    Overseer.db.char[info[#info]] = value;
+    CEPGPZulu.db.char[info[#info]] = value;
 end
 
-Overseer.defaults.char = {
+CEPGPZulu.defaults.char = {
     bonus = "10",
     flask = "17628 17627 17626 17538",
     message = "Химия",
 };
 
-Overseer.options = {
+CEPGPZulu.options = {
     name = 'EPGP consumables',
-    handler = Overseer,
+    handler = CEPGPZulu,
     type = 'group',
     args = {
         bonus = {
@@ -47,10 +47,10 @@ Overseer.options = {
     },
 };
 
-function Overseer:EPGP_Scan()
+function CEPGPZulu:EPGP_Scan()
 end
 
-function Overseer:EPGP_ScanRaid()
+function CEPGPZulu:EPGP_ScanRaid()
     if UnitInRaid("player") == nil then
         return;
     end
@@ -69,13 +69,13 @@ function Overseer:EPGP_ScanRaid()
 
     for _, v in ipairs(result) do
         if v and v.ep then
-            CEPGP_addEP(v.name, v.ep, v.msg);
-            --print(v.name .. ": " .. v.ep .. " for " .. v.msg);
+--            CEPGP_addEP(v.name, v.ep, v.msg);
+            print(v.name .. ": " .. v.ep .. " for " .. v.msg);
         end;
     end
 end
 
-function Overseer:EPGP_ScanUnit(unit, name)
+function CEPGPZulu:EPGP_ScanUnit(unit, name)
     local bonus = tonumber(self.db.char.bonus);
     local flasks = strtrim(self.db.char.flask);
 

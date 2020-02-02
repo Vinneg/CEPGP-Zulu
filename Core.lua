@@ -2,15 +2,15 @@ local AceConfig = LibStub("AceConfig-3.0");
 local AceDB = LibStub("AceDB-3.0");
 local AceConfigDialog = LibStub("AceConfigDialog-3.0");
 
-Overseer = LibStub("AceAddon-3.0"):NewAddon("Overseer", "AceConsole-3.0");
+CEPGPZulu = LibStub("AceAddon-3.0"):NewAddon("CEPGPZulu", "AceConsole-3.0");
 
-Overseer.defaults = { char = {} };
+CEPGPZulu.defaults = { char = {} };
 
-Overseer.options = {};
+CEPGPZulu.options = {};
 
-Overseer.db = {};
+CEPGPZulu.db = {};
 
-function Overseer:HandleChatCommand(input)
+function CEPGPZulu:HandleChatCommand(input)
     if (input == nil) then
         return;
     end
@@ -24,10 +24,10 @@ function Overseer:HandleChatCommand(input)
     end
 end
 
-function Overseer:OnInitialize()
-    self:RegisterChatCommand("overseer", "HandleChatCommand");
+function CEPGPZulu:OnInitialize()
+    self:RegisterChatCommand("cepz", "HandleChatCommand");
 
-    AceConfig:RegisterOptionsTable("Options", Overseer.options);
+    AceConfig:RegisterOptionsTable("Options", CEPGPZulu.options);
 
-    self.db = AceDB:New("Settings", Overseer.defaults, true);
+    self.db = AceDB:New("Settings", CEPGPZulu.defaults, true);
 end
