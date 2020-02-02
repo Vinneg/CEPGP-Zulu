@@ -1,10 +1,10 @@
-Скачать ZIP архив
+Скачать **ZIP** архив
 
-В папке World of Warcraft\_classic_\Interface\AddOns\ создать папку CEPGP-Zulu (или очистить ее)
+В папке **..\World of Warcraft\_classic_\Interface\AddOns\** создать папку **CEPGP-Zulu** (или очистить ее)
 
-Скопировать файлы из ZIP в CEPGP-Zulu
+Скопировать файлы из **ZIP** в **CEPGP-Zulu**
 
-В игре
+В игре:
+>/cepz opts - для вызова настроек
 
-*/cepz opts - для вызова настроек
-*/cepz scan - для начисления EP
+>/cepz scan - для начисления EP
