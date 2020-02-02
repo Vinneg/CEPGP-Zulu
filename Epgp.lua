@@ -69,8 +69,8 @@ function CEPGPZulu:EPGP_ScanRaid()
 
     for _, v in ipairs(result) do
         if v and v.ep then
---            CEPGP_addEP(v.name, v.ep, v.msg);
-            print(v.name .. ": " .. v.ep .. " for " .. v.msg);
+            CEPGP_addEP(v.name, v.ep, v.msg);
+--            print(v.name .. ": " .. v.ep .. " for " .. v.msg);
         end;
     end
 end
