@@ -10,7 +10,7 @@ end
 
 CEPGPZulu.defaults.char = {
     bonus = "10",
-    flask = "17628 17627 17626 17538",
+    flask = "17628 17627 17626",
     message = "Химия",
 };
 
@@ -47,7 +47,7 @@ CEPGPZulu.options = {
     },
 };
 
-function CEPGPZulu:EPGP_ScanRaid()
+function CEPGPZulu:EPGP_ScanRaid(doEPGP)
     if UnitInRaid("player") == nil then
         return;
     end
@@ -66,8 +66,11 @@ function CEPGPZulu:EPGP_ScanRaid()
 
     for _, v in ipairs(result) do
         if v and v.ep then
-            CEPGP_addEP(v.name, v.ep, v.msg);
---            print(v.name .. ": " .. v.ep .. " for " .. v.msg);
+            if doEPGP then
+                CEPGP_addEP(v.name, v.ep, v.msg);
+            else
+                self:Print(v.name .. ": " .. v.ep .. " for " .. v.msg);
+            end
         end;
     end
 end

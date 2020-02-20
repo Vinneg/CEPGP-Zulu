@@ -18,16 +18,18 @@ function CEPGPZulu:HandleChatCommand(input)
     local arg = strlower(input);
 
     if arg == "opts" then
-        AceConfigDialog:Open("Options");
+        AceConfigDialog:Open("CEPGPZuluOptions");
     elseif arg == "scan" then
-        self:EPGP_ScanRaid();
+        self:EPGP_ScanRaid(true);
+    elseif arg == "test" then
+        self:EPGP_ScanRaid(false);
     end
 end
 
 function CEPGPZulu:OnInitialize()
     self:RegisterChatCommand("cepz", "HandleChatCommand");
 
-    AceConfig:RegisterOptionsTable("Options", CEPGPZulu.options);
+    AceConfig:RegisterOptionsTable("CEPGPZuluOptions", CEPGPZulu.options);
 
-    self.db = AceDB:New("Settings", CEPGPZulu.defaults, true);
+    self.db = AceDB:New("CEPGPZuluSettings", CEPGPZulu.defaults, true);
 end
