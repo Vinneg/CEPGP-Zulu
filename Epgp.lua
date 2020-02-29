@@ -57,19 +57,25 @@ function CEPGPZulu:EPGP_ScanRaid(doEPGP)
     for pid = 1, GetNumGroupMembers() do
         local name, _, _, _, _, _, _, online = GetRaidRosterInfo(pid);
 
-        if name and online then
-            tinsert(result, self:EPGP_ScanUnit("raid" .. pid, name));
+        local tmp = self:EPGP_ScanUnit("raid" .. pid, name);
+
+        if name and online and tmp.ep then
+            tinsert(result, tmp);
         end
     end
 
     sort(result, function(a, b) return a.name < b.name end);
+
+    if not doEPGP then
+        self:Print('Total count is ', #result);
+    end
 
     for _, v in ipairs(result) do
         if v and v.ep then
             if doEPGP then
                 CEPGP_addEP(v.name, v.ep, v.msg);
             else
-                self:Print(v.name .. ": " .. v.ep .. " for " .. v.msg);
+                self:Print(v.name, ": ", v.ep, " for ", self.db.char.message);
             end
         end;
     end
@@ -82,7 +88,6 @@ function CEPGPZulu:EPGP_ScanUnit(unit, name)
     local result = {
         name = name,
         ep = nil,
-        msg = strtrim(self.db.char.message),
     };
 
     for i = 1, 40 do
