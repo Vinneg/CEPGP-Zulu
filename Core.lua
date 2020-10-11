@@ -208,8 +208,6 @@ function CEPGPZulu:Scan4Buffs(doEG)
         if name and online then
             local uhb = unitHasBuff('raid' .. pid, store().buffs.ids);
 
-            print(uhb.hasAll);
-
             local tmp = { name = name, gp = not uhb.hasAll and store().buffs.fine, };
 
             if tmp.gp then
