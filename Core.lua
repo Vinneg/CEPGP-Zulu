@@ -128,15 +128,17 @@ CEPGPZulu.options = {
 CEPGPZulu.store = {};
 
 local function unitHasBuff(unit, buffs)
-    local count = 0;
+    local i, count = 0, 0;
 
-    for i = 1, 40 do
+    repeat
+        i = i + 1;
+
         local spellId = select(10, UnitBuff(unit, i));
 
         count = count + (spellId and strfind(buffs, spellId) and 1 or 0);
-    end
+    until not spellId;
 
-    return { hasOne = (count > 0), hasAll = (count == #{ strsplit(',', buffs) }), };
+    return { hasOne = (count > 0), hasAll = (count == #{ strsplit(' ', buffs) }), };
 end
 
 function CEPGPZulu:HandleChatCommand()
